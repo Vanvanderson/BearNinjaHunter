@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear, Ninja, Hunter</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- print result of game -->
+    <p id="game">Replace this content with scripted content</p>
+    <script>
+        //get name
+        let playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started: ');
+        alert(`Hi ${playerName}! Let's play!!`);
+        //get choice
+        let playerChoice = prompt('Who are you: Bear, Ninja, or Hunter? ');
+        //print result of game to console
+        console.log(`${playerName}, you picked ${playerChoice}`)
+        console.log(`The computer picked Bear!`)
+        //send result to html
+        document.getElementById("game").innerHTML = `${playerName}, You picked ${playerChoice}<br>The computer chose Bear!`;
+    </script>
+</body>
+</html>
