@@ -11,15 +11,58 @@
     <p id="game">Replace this content with scripted content</p>
     <script>
         //get name
+        let matchCondition;
+        let computerChoice = 'Hunter';
         let playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started: ');
         alert(`Hi ${playerName}! Let's play!!`);
         //get choice
         let playerChoice = prompt('Who are you: Bear, Ninja, or Hunter? ');
         //print result of game to console
-        console.log(`${playerName}, you picked ${playerChoice}`)
-        console.log(`The computer picked Bear!`)
+        console.log(`${playerName}, you chose ${playerChoice}!`);
         //send result to html
-        document.getElementById("game").innerHTML = `${playerName}, You picked ${playerChoice}<br>The computer chose Bear!`;
+        if(computerChoice.toLowerCase() == 'bear'){
+            switch(playerChoice.toLowerCase()){
+                case 'bear':
+                    matchCondition = 'Tied'
+                    break;
+                case 'ninja':
+                    matchCondition = 'Lose'
+                    break;
+                case 'hunter':
+                    matchCondition = 'Win'
+                    break;
+            }
+        } else if(computerChoice.toLowerCase() == 'ninja'){
+            switch(playerChoice.toLowerCase()){
+                case 'bear':
+                    matchCondition = 'Win'
+                    break;
+                case 'ninja':
+                    matchCondition = 'Tied'
+                    break;
+                case 'hunter':
+                    matchCondition = 'Lose'
+                    break;
+            }
+        } else if(computerChoice.toLowerCase() == 'hunter'){
+            switch(playerChoice.toLowerCase()){
+                case 'bear':
+                    matchCondition = 'Lose'
+                    break;
+                case 'ninja':
+                    matchCondition = 'Win'
+                    break;
+                case 'hunter':
+                    matchCondition = 'Tied'
+                    break;
+            }
+        } else{
+            console.log('ERROR: Computer has become sentient')
+            matchCondition = 'didn\'t expect the computer to cheat? Didjya?'
+        }
+        console.log(`The computer chose ${computerChoice}!`);
+        console.log(`You ${matchCondition}!!`)
+        document.getElementById("game").innerHTML = `${playerName}, You chose ${playerChoice}!<br>The computer chose ${computerChoice}!<br>You ${matchCondition}!!`;
     </script>
 </body>
 </html>
