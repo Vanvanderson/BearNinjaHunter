@@ -18,7 +18,7 @@
         //get choice
         let playerChoice = prompt('Who are you: Bear, Ninja, or Hunter? ');
         //print result of game to console
-        console.log(`${playerName}, you chose ${playerChoice}!`);
+        console.log(`${playerName} you chose ${playerChoice}!`);
         //send result to html
         if(computerChoice.toLowerCase() == 'bear'){
             switch(playerChoice.toLowerCase()){
@@ -62,7 +62,7 @@
         }
         console.log(`The computer chose ${computerChoice}!`);
         console.log(`You ${matchCondition}!!`)
-        document.getElementById("game").innerHTML = `${playerName}, You chose ${playerChoice}!<br>The computer chose ${computerChoice}!<br>You ${matchCondition}!!`;
+        document.getElementById("game").innerHTML = `${playerName} you chose ${playerChoice}!<br>The computer chose ${computerChoice}!<br>You ${matchCondition}!!`;
     </script>
 </body>
 </html>
