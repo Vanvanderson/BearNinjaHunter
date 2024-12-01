@@ -10,16 +10,101 @@
     <!-- print result of game -->
     <p id="game">Replace this content with scripted content</p>
     <script>
-        //get name
-        let playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started: ');
+        let wins = 0;
+        let rounds = 1;
+        let playing = true;
+        let playerName = '';
+        //get player name
+        playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started: ');
+            if(playerName == '' || playerName == null){
+                while(playerName == '' || playerName == null){
+                    playerName = prompt('Please enter a valid name: ');
+                }
+            }
+        //display player name
         alert(`Hi ${playerName}! Let's play!!`);
-        //get choice
-        let playerChoice = prompt('Who are you: Bear, Ninja, or Hunter? ');
-        //print result of game to console
-        console.log(`${playerName}, you picked ${playerChoice}`)
-        console.log(`The computer picked Bear!`)
+        while(playing == true){
+            //define match variables
+            let matchCondition = 2;
+            let matchOutcomes = ['Win','Lose','Tied'];
+            let choices = ['bear','ninja','hunter'];
+            //get computer choice
+            let computerChoice = Math.floor(Math.random() * 3);
+            computerChoice = choices[computerChoice]
+            //get player choice
+            let playerChoice = prompt('Who are you: Bear, Ninja, or Hunter? ');
+            if(playerChoice == null){
+                playerChoice = 'nothing'
+            }
+            if(!choices.includes(playerChoice.toLowerCase())){
+                while(!choices.includes(playerChoice.toLowerCase())){
+                    playerChoice = prompt('Please enter a valid choice (Bear, Ninja or Hunter): ')
+                    if(playerChoice == null){
+                    playerChoice = 'nothing'
+                    } else{
+                        playerChoice = playerChoice
+                    }
+                }
+            }else{
+                playerChoice = playerChoice
+            }
+            /* if(playerChoice == ''){
+                while(playerChoice == ''){
+                    playerChoice = prompt('Please enter a valid choice (Bear, Ninja or Hunter): ');
+                }
+            } */
+            console.log('3')
+            console.log('2')
+            console.log('1')
+            console.log(`${playerName} you chose ${playerChoice}!`);
+            //game logic
+            switch(computerChoice.toLowerCase()){
+                case choices[0].toLowerCase():
+                    switch(playerChoice.toLowerCase()){
+                        case 'ninja':
+                            matchCondition = 1
+                            break;
+                        case 'hunter':
+                            matchCondition = 0
+                            wins++
+                            break;
+                }
+                break;
+                case choices[1].toLowerCase():
+                    switch(playerChoice.toLowerCase()){
+                        case 'bear':
+                            matchCondition = 0
+                            wins++
+                            break;
+                        case 'hunter':
+                            matchCondition = 1
+                            break;
+                }
+                break;
+                case choices[2].toLowerCase():
+                    switch(playerChoice.toLowerCase()){
+                    case 'bear':
+                        matchCondition = 1
+                        break;
+                    case 'ninja':
+                        matchCondition = 0
+                        wins++
+                        break;
+                break;
+                }
+            }
+        console.log(`The computer chose ${computerChoice}!`);
+        console.log(`You ${matchOutcomes[matchCondition]}!!`)
         //send result to html
-        document.getElementById("game").innerHTML = `${playerName}, You picked ${playerChoice}<br>The computer chose Bear!`;
+        document.getElementById("game").innerHTML = `${playerName} you chose ${playerChoice}!<br>The computer chose ${computerChoice}!<br>You ${matchOutcomes[matchCondition]}!! <br>You played ${rounds} rounds, and you won ${wins} times.`;
+        keepPlaying = prompt('Would you like to play again (y/n)?')
+        if(keepPlaying == 'n'){
+            playing = false;
+        } else{
+            playing = true;
+        }
+        rounds++
+        }
     </script>
 </body>
 </html>
